@@ -1,0 +1,242 @@
+﻿/* ============================================
+   EcoCycle – Estilos página Aprender
+   asp_presentacion/wwwroot/css/aprender.css
+   ============================================ */
+
+/* ── FILTROS ── */
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-white);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all .18s;
+}
+
+    .filter-btn:hover {
+        border-color: var(--green-primary);
+        color: var(--green-primary);
+    }
+
+    .filter-btn.active {
+        background: var(--text-primary);
+        border-color: var(--text-primary);
+        color: white;
+    }
+
+/* ── GRID DE ARTÍCULOS ── */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+/* Card base */
+.article-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+    .article-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
+
+/* Imagen / placeholder */
+.card-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+}
+
+    .card-img-placeholder.green {
+        background: #dcfce7;
+    }
+
+    .card-img-placeholder.blue {
+        background: #dbeafe;
+    }
+
+    .card-img-placeholder.amber {
+        background: #fef3c7;
+    }
+
+    .card-img-placeholder.purple {
+        background: #ede9fe;
+    }
+
+/* Badge de categoría */
+.card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+}
+
+    .card-badge.basicos {
+        background: #2563eb;
+    }
+
+    .card-badge.avanzado {
+        background: #7c3aed;
+    }
+
+    .card-badge.tips {
+        background: #d97706;
+    }
+
+    .card-badge.impacto {
+        background: var(--green-primary);
+    }
+
+/* Cuerpo de card */
+.card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--green-xlight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .card-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--green-primary);
+    }
+
+.card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    flex: 1;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+    .card-footer svg {
+        width: 14px;
+        height: 14px;
+        fill: var(--text-muted);
+    }
+
+.card-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.card-pts-badge {
+    margin-left: auto;
+    background: var(--green-xlight);
+    color: var(--green-dark);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* ── CARD DESTACADA ── */
+.featured-card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 240px;
+}
+
+    .featured-card .card-img-placeholder {
+        aspect-ratio: unset;
+        min-height: 240px;
+        font-size: 72px;
+        border-radius: 0;
+    }
+
+    .featured-card .card-body {
+        padding: 32px;
+        justify-content: center;
+    }
+
+    .featured-card .card-title {
+        font-size: 22px;
+    }
+
+    .featured-card .card-desc {
+        font-size: 15px;
+    }
+
+.featured-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--green-primary);
+    margin-bottom: 4px;
+}
+
+@media (max-width: 640px) {
+    .featured-card {
+        grid-template-columns: 1fr;
+    }
+
+        .featured-card .card-img-placeholder {
+            min-height: 160px;
+        }
+}

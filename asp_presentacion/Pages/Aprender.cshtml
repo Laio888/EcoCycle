@@ -1,0 +1,166 @@
+﻿@page
+@model EcoCycle.asp_presentacion.Pages.AprenderModel
+@{
+    ViewData["Title"] = "Aprender";
+    ViewData["ActivePage"] = "Aprender";
+    ViewData["UserPoints"] = Model.UserPoints;
+    ViewData["UserLevel"] = Model.UserLevel;
+    ViewData["LevelName"] = Model.LevelName;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/aprender.css" asp-append-version="true" />
+}
+
+<div class="page-content">
+
+    <div class="page-header">
+        <h1 class="page-title">Aprende sobre Compostaje</h1>
+        <p class="page-subtitle">Descubre cómo hacer compost de forma correcta y su impacto positivo</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filtrar(this, 'todo')">Todo</button>
+        <button class="filter-btn" onclick="filtrar(this, 'basicos')">Básicos</button>
+        <button class="filter-btn" onclick="filtrar(this, 'avanzado')">Avanzado</button>
+        <button class="filter-btn" onclick="filtrar(this, 'tips')">Tips</button>
+        <button class="filter-btn" onclick="filtrar(this, 'impacto')">Impacto Ambiental</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="articles-grid" id="grid">
+
+        <a href="#" class="article-card featured-card" data-cat="basicos">
+            <div class="card-img-placeholder green">
+                🌱
+                <span class="card-badge basicos">Básicos</span>
+            </div>
+            <div class="card-body">
+                <p class="featured-label">Artículo destacado</p>
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0 10-8 10-8s-1 2-5 2.5c.28-.5.61-1.13.88-1.73C14.37 11.05 15.52 9 17 8z" /></svg>
+                    </div>
+                    <span class="card-title">¿Qué es el compostaje y por qué deberías hacerlo?</span>
+                </div>
+                <p class="card-desc">El compostaje transforma residuos orgánicos en abono rico en nutrientes. Aprende por qué es clave para reducir el impacto ambiental de tu hogar.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">5 min de lectura</span>
+                    <span class="card-pts-badge">+50 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="article-card" data-cat="basicos">
+            <div class="card-img-placeholder amber">
+                🍂
+                <span class="card-badge basicos">Básicos</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0 10-8 10-8s-1 2-5 2.5c.28-.5.61-1.13.88-1.73C14.37 11.05 15.52 9 17 8z" /></svg>
+                    </div>
+                    <span class="card-title">¿Qué residuos puedes compostar en casa?</span>
+                </div>
+                <p class="card-desc">No todo lo orgánico es compostable. Conoce qué sí y qué no debes echar a tu compostador para obtener resultados óptimos.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">4 min de lectura</span>
+                    <span class="card-pts-badge">+30 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="article-card" data-cat="avanzado">
+            <div class="card-img-placeholder purple">
+                🔬
+                <span class="card-badge avanzado">Avanzado</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#ede9fe;">
+                        <svg viewBox="0 0 24 24" style="fill:#7c3aed;"><path d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z" /></svg>
+                    </div>
+                    <span class="card-title">Compostaje Bokashi: fermentación anaeróbica</span>
+                </div>
+                <p class="card-desc">Técnica japonesa que permite compostar prácticamente cualquier residuo orgánico, incluso carnes y lácteos, en espacios pequeños.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">8 min de lectura</span>
+                    <span class="card-pts-badge">+80 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="article-card" data-cat="tips">
+            <div class="card-img-placeholder blue">
+                💡
+                <span class="card-badge tips">Tips</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#dbeafe;">
+                        <svg viewBox="0 0 24 24" style="fill:#2563eb;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" /></svg>
+                    </div>
+                    <span class="card-title">5 errores comunes al compostar (y cómo evitarlos)</span>
+                </div>
+                <p class="card-desc">Desde exceso de humedad hasta mala proporción de materiales. Identifica los errores más frecuentes y corrígelos fácilmente.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">6 min de lectura</span>
+                    <span class="card-pts-badge">+40 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="article-card" data-cat="impacto">
+            <div class="card-img-placeholder green">
+                🌍
+                <span class="card-badge impacto">Impacto Ambiental</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7 13.5C5.62 13.5 4.5 12.38 4.5 11S5.62 8.5 7 8.5s2.5 1.12 2.5 2.5S8.38 13.5 7 13.5zm10-5c1.38 0 2.5 1.12 2.5 2.5S18.38 13.5 17 13.5 14.5 12.38 14.5 11s1.12-2.5 2.5-2.5zm-5 9c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z" /></svg>
+                    </div>
+                    <span class="card-title">¿Cuánto CO₂ evitas al compostar tus residuos?</span>
+                </div>
+                <p class="card-desc">Cada kilogramo compostado evita aproximadamente 0.5 kg de CO₂ equivalente. Descubre el impacto real de tus acciones.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">7 min de lectura</span>
+                    <span class="card-pts-badge">+60 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="article-card" data-cat="avanzado">
+            <div class="card-img-placeholder amber">
+                🪱
+                <span class="card-badge avanzado">Avanzado</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#fef3c7;">
+                        <svg viewBox="0 0 24 24" style="fill:#d97706;"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" /></svg>
+                    </div>
+                    <span class="card-title">Vermicompostaje: lombrices como aliadas</span>
+                </div>
+                <p class="card-desc">Las lombrices rojas de California procesan hasta la mitad de su peso en residuos orgánicos diariamente. Aprende a montarlo en casa.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">10 min de lectura</span>
+                    <span class="card-pts-badge">+100 pts al completar</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/aprender.js" asp-append-version="true"></script>
+}

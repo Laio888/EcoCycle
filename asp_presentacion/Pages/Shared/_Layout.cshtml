@@ -1,52 +1,138 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - asp_presentacion</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/asp_presentacion.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] – EcoCompost</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS compartido de EcoCycle -->
+    <link rel="stylesheet" href="~/css/ecocycle.css" asp-append-version="true" />
+
+    <!-- CSS específico de cada página (cada .cshtml lo inyecta aquí) -->
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">asp_presentacion</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar-eco">
+        <div class="navbar-inner">
+
+            <!-- Logo y puntos -->
+            <a class="navbar-brand" asp-page="/Index">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0
+                             10-8 10-8s-1 2-5 2.5c.28-.5.61-1.13.88-1.73C14.37 11.05 15.52 9 17 8z" />
+                    </svg>
                 </div>
+                <div class="brand-text">
+                    <span class="brand-name">EcoCompost</span>
+                    <span class="brand-pts">@ViewData["UserPoints"] puntos</span>
+                </div>
+            </a>
+
+            <!-- Links de navegación -->
+            <nav class="nav-links">
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Index" ? "active" : "")" asp-page="/Index">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+                    Inicio
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Registrar" ? "active" : "")" asp-page="/Registrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="16" />
+                        <line x1="8" y1="12" x2="16" y2="12" />
+                    </svg>
+                    Registrar
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Historial" ? "active" : "")" asp-page="/Historial">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7
+                             7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42
+                             1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28
+                             2.54.72-1.21-3.5-2.08V8H12z" />
+                    </svg>
+                    Historial
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Recompensas" ? "active" : "")" asp-page="/Recompensas">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 7h-4V5l-2-2h-4L8 5v2H4c-1.1 0-2 .9-2 2v5c0 .75.4
+                             1.43 1 1.8V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3.2c.6-.37
+                             1-1.05 1-1.8V9c0-1.1-.9-2-2-2z" />
+                    </svg>
+                    Recompensas
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Aprender" ? "active" : "")" asp-page="/Aprender">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45
+                             4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0
+                             4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25
+                             0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1z" />
+                    </svg>
+                    Aprender
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Impacto" ? "active" : "")" asp-page="/Impacto">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1
+                             0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                    </svg>
+                    Impacto
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Puntos" ? "active" : "")" asp-page="/Puntos">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+                    </svg>
+                    Puntos
+                </a>
+                <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Perfil" ? "active" : "")" asp-page="/Perfil">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67
+                             0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                    Perfil
+                </a>
+            </nav>
+
+            <!-- Nivel y salir -->
+            <div class="navbar-right">
+                <div class="nav-level">
+                    <span class="level-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+                        </svg>
+                    </span>
+                    <span class="level-num">Nivel @ViewData["UserLevel"]</span>
+                    <span class="level-badge">@ViewData["LevelName"]</span>
+                </div>
+                <a class="btn-logout" asp-page="/Account/Logout">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Salir
+                </a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - asp_presentacion - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>
+    </nav>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- ── CONTENIDO DE CADA PÁGINA ── -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- JS compartido de Bootstrap (ya existe en el proyecto) -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
+    <!-- JS específico de cada página -->
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

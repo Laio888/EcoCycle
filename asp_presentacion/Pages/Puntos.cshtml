@@ -1,0 +1,226 @@
+﻿@page
+@model EcoCycle.asp_presentacion.Pages.PuntosModel
+@{
+    ViewData["Title"] = "Puntos y Ranking";
+    ViewData["ActivePage"] = "Puntos";
+    ViewData["UserPoints"] = Model.UserPoints;
+    ViewData["UserLevel"] = Model.UserLevel;
+    ViewData["LevelName"] = Model.LevelName;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/puntos.css" asp-append-version="true" />
+}
+
+<div class="page-content">
+
+    <div class="page-header">
+        <h1 class="page-title">Puntos y Ranking</h1>
+        <p class="page-subtitle">Tu progreso, posición en la comunidad y logros desbloqueados</p>
+    </div>
+
+    <!-- Métricas -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div>
+                <p class="metric-label">Puntos Totales</p>
+                <p class="metric-value green">@Model.UserPoints</p>
+            </div>
+            <div class="metric-icon green">
+                <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" /></svg>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div>
+                <p class="metric-label">Nivel Actual</p>
+                <p class="metric-value blue">@Model.UserLevel</p>
+            </div>
+            <div class="metric-icon blue">
+                <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.28C7.81 18 6 15.21 6 12c0-4.08 3.05-7.44 7-7.93V2.05z" /></svg>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div>
+                <p class="metric-label">Posición Ranking</p>
+                <p class="metric-value amber">#@Model.RankingPosition</p>
+            </div>
+            <div class="metric-icon amber">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div>
+                <p class="metric-label">Logros Obtenidos</p>
+                <p class="metric-value purple">@Model.LogrosObtenidos/@Model.LogrosTotal</p>
+            </div>
+            <div class="metric-icon purple">
+                <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" /></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progreso + Niveles -->
+    <div class="two-col">
+
+        <div class="panel">
+            <p class="panel-title">Progreso de Nivel</p>
+            <p class="panel-sub">Nivel @Model.UserLevel → Nivel @(Model.UserLevel + 1)</p>
+            <div class="level-row">
+                <span class="level-label">Nivel @Model.UserLevel — @Model.LevelName</span>
+                <span class="level-label">Nivel @(Model.UserLevel + 1)</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: @Model.LevelProgressPercent%;"></div>
+            </div>
+            <p class="progress-pts">
+                <span>@Model.UserPoints</span> / @Model.NextLevelPoints pts
+                — te faltan <span>@(Model.NextLevelPoints - Model.UserPoints) pts</span>
+            </p>
+
+            <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+                <p style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:14px;">
+                    Cómo ganar más puntos
+                </p>
+                <div class="tips-list">
+                    <div class="tip-row">
+                        <span class="tip-emoji">🥬</span>
+                        <span class="tip-label">Registrar residuos</span>
+                        <span class="tip-pts green">+8–15 pts/kg</span>
+                    </div>
+                    <div class="tip-row">
+                        <span class="tip-emoji">📖</span>
+                        <span class="tip-label">Completar artículos</span>
+                        <span class="tip-pts blue">+30–100 pts</span>
+                    </div>
+                    <div class="tip-row">
+                        <span class="tip-emoji">🔥</span>
+                        <span class="tip-label">Racha semanal</span>
+                        <span class="tip-pts amber">+50 pts/semana</span>
+                    </div>
+                    <div class="tip-row">
+                        <span class="tip-emoji">📸</span>
+                        <span class="tip-label">Subir evidencia fotográfica</span>
+                        <span class="tip-pts purple">+10 pts extra</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p class="panel-title">Niveles del Sistema</p>
+            <p class="panel-sub">Tu camino de crecimiento</p>
+            <div class="levels-list">
+                @foreach (var nivel in Model.Niveles)
+                {
+                    var estado = nivel.Numero < Model.UserLevel ? "unlocked"
+                    : nivel.Numero == Model.UserLevel ? "current"
+                    : "locked";
+                    <div class="level-item @estado">
+                        <div class="level-num-badge">@nivel.Numero</div>
+                        <div class="level-info">
+                            <p class="level-name">
+                                @nivel.Nombre
+                                @if (nivel.Numero == Model.UserLevel)
+                                {
+                                    <span style="font-size:12px;color:var(--green-primary);"> ← Estás aquí</span>
+                                }
+                            </p>
+                            <p class="level-req">@nivel.RangoMin.ToString("N0") – @nivel.RangoMax.ToString("N0") puntos</p>
+                        </div>
+                        @if (nivel.Numero < Model.UserLevel)
+                        {
+                            <span class="level-check">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                            </span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Ranking -->
+    <div class="panel" style="margin-bottom:28px;">
+        <div class="ranking-header">
+            <div>
+                <p class="panel-title">Ranking de la Comunidad</p>
+                <p class="panel-sub" style="margin-bottom:0;">Compite con otros usuarios de EcoCompost</p>
+            </div>
+            <div class="period-tabs">
+                <button class="period-tab active" onclick="switchPeriod(this)">Este mes</button>
+                <button class="period-tab" onclick="switchPeriod(this)">Global</button>
+            </div>
+        </div>
+
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th style="width:48px;">#</th>
+                    <th>Usuario</th>
+                    <th>Nivel</th>
+                    <th>Puntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entry in Model.Ranking)
+                {
+                    var esYo = entry.EsUsuarioActual;
+                    var posCss = entry.Posicion == 1 ? "gold"
+                    : entry.Posicion == 2 ? "silver"
+                    : entry.Posicion == 3 ? "bronze"
+                    : esYo ? "me-color" : "";
+                    var emoji = entry.Posicion == 1 ? "🥇"
+                    : entry.Posicion == 2 ? "🥈"
+                    : entry.Posicion == 3 ? "🥉"
+                    : entry.Posicion.ToString();
+                    <tr class="ranking-row @(esYo ? "me" : "")">
+                        <td><span class="rank-pos @posCss">@emoji</span></td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar av-@entry.AvatarColor">@entry.Inicial</div>
+                                <div>
+                                    <p class="user-name">
+                                        @entry.Nombre
+                                        @if (esYo)
+                                        {
+                                            <span class="me-tag">Tú</span>
+                                        }
+                                    </p>
+                                    <p class="user-level">@entry.NivelNombre</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="rank-badge @entry.BadgeCss">@entry.NivelNombre</span></td>
+                        <td>
+                            <p class="rank-pts @(esYo ? "me-pts" : "")">@entry.Puntos.ToString("N0")</p>
+                            <p class="rank-pts-label">puntos</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Logros -->
+    <div>
+        <h2 class="section-title">Mis Logros</h2>
+        <p class="section-subtitle">@Model.LogrosObtenidos de @Model.LogrosTotal logros desbloqueados</p>
+        <div class="logros-grid">
+            @foreach (var logro in Model.Logros)
+            {
+                <div class="logro-card @(logro.Obtenido ? "unlocked" : "locked")">
+                    <span class="logro-emoji">@logro.Emoji</span>
+                    <p class="logro-name">@logro.Nombre</p>
+                    <p class="logro-desc">@logro.Descripcion</p>
+                    <span class="logro-badge">@(logro.Obtenido ? "Obtenido" : "Bloqueado")</span>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/puntos.js" asp-append-version="true"></script>
+}
