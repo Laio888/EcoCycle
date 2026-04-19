@@ -1,0 +1,15 @@
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\bin\Debug\net9.0\Dominio.deps.json
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\bin\Debug\net9.0\Dominio.runtimeconfig.json
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\bin\Debug\net9.0\Dominio.dll
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\bin\Debug\net9.0\Dominio.pdb
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.csproj.AssemblyReference.cache
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.AssemblyInfoInputs.cache
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.AssemblyInfo.cs
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.sourcelink.json
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.dll
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\refint\Dominio.dll
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.pdb
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\Dominio.genruntimeconfig.cache
+C:\Users\santi\Dropbox\U ITM\Semestre 5\Analisis de Requisitos 2\EcoCycle\Dominio\obj\Debug\net9.0\ref\Dominio.dll
