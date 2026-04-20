@@ -117,7 +117,7 @@ namespace asp_servicios.Controllers
                 var entidad = JsonConversor.ConvertirAObjeto<Usuarios>(
                     JsonConversor.ConvertirAString(datos["Entidad"]));
 
-                if (entidad.Nombre != "Pepito@email.com" || entidad.Contraseña != "JHGjkhtu6387456yssdf")
+                if (entidad.Nombre != "admin@email.com" || entidad.Contraseña != "admin1234")
                     throw new Exception("Credenciales inválidas.");
 
                 var llave = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{entidad.Nombre}:{DateTime.Now}"));
