@@ -1,0 +1,128 @@
+/* Estilos para la página RegistrarResiduo.cshtml */
+
+body {
+    background-color: #f0f8f0; /* Fondo verde claro para tema ecológico */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.display-4 {
+    color: #2e8b57; /* Verde marino */
+    margin-bottom: 2rem;
+}
+
+fieldset {
+    border: 2px solid #32cd32; /* Verde lima */
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #228b22; /* Verde bosque */
+    padding: 0 1rem;
+}
+
+h2 {
+    color: #556b2f; /* Verde oliva oscuro */
+    margin-bottom: 1.5rem;
+}
+
+div {
+    margin-bottom: 1rem;
+}
+
+/* Estilos para los radio buttons y labels */
+input[type="radio"] {
+    display: none; /* Ocultar los radio buttons */
+}
+
+label {
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+label:hover {
+    border-color: #32cd32;
+    background-color: #e8f5e8;
+}
+
+input[type="radio"]:checked + label {
+    border-color: #228b22;
+    background-color: #d4edda; /* Verde claro para seleccionado */
+    box-shadow: 0 0 10px rgba(34, 139, 34, 0.3);
+}
+
+strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #2e8b57;
+}
+
+p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+small {
+    color: #8b4513; /* Marrón para puntos */
+    font-weight: bold;
+}
+
+/* Estilo para el input de peso */
+input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+/* Estilo para el botón */
+button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #228b22;
+}
+
+/* Estilo para los puntos obtenidos */
+h3 {
+    color: #ff8c00; /* Naranja para destacar */
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    fieldset {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    label {
+        padding: 0.75rem;
+    }
+}

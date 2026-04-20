@@ -1,0 +1,93 @@
+@page
+@model RegistrarResiduoModel
+@{
+    ViewData["Title"] = "Registro y evaluación de residuos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Registrar tu Residuo</h1>
+   <form method="post">
+    <fieldset>
+        <legend>Registrar Residuos orgánicos</legend>
+        <h2>Por favor, selecciona tu residuo. De esta manera ganas puntos, y ayudas al medio ambiente</h2>
+        <div>
+            <input type="radio" id="Residuo1" name="ResidOrg" value="frutas" checked/>
+            <label for="Residuo1">
+                <strong>🍇Cascara de frutas</strong>
+                <p>Restos de fruta, como cascaras, corazones y frutas en mal estado.</p>
+                <small>10 puntos/kg</small>
+            </label>
+
+            <input type="radio" id="Residuo2" name="ResidOrg" value="verduras"/>
+            <label for="Residuo2">
+                <strong>🥬Cascara de verduras</strong>
+                <p>Cáscaras, hojas y restos de vegetales.</p>
+                <small>12 puntos/kg</small>
+            </label> 
+
+            <input type="radio" id="Residuo3" name="ResidOrg" value="huevo"/>
+            <label for="Residuo3">
+                <strong>🥚Cascara de huevo</strong>
+                <p>Cáscaras de huevo trituradas. Pueden servir para hecharle a las plantas.</p>
+                <small>15 puntos/kg</small>
+            </label>
+
+            <input type="radio" id="Residuo4" name="ResidOrg" value="pscafe"/>
+            <label for="Residuo4">
+                <strong>☕Posos de cafe</strong>
+                <p>cafe usado y filtros de papel</p>
+                <small>15 puntos/kg</small>
+            </label>
+
+            <input type="radio" id="Residuo5" name="ResidOrg" value="blTe"/>
+            <label for="Residuo5">
+                <strong>🍵Bolsas de té</strong>
+                <p>Té usado, pero sin grapas de metal o relacionados.</p>
+                <small>12 puntos/kg</small>
+            </label>
+
+            <input type="radio" id="Residuo6" name="ResidOrg" value="rdjardin"/>
+            <label for="Residuo6">
+                <strong>🌱Residuos de jardin</strong>
+                <p>Hojas, cesped y ramas pequeñas o cortadas.</p>
+                <small>10 puntos/kg</small>
+            </label>
+
+            <input type="radio" id="Residuo7" name="ResidOrg" value="cereales"/>
+            <label for="Residuo7">
+                <strong>🍞Pan y cereales</strong>
+                <p>Pan duro y cereales sin procesar.</p>
+                <small>20 puntos/kg</small>
+            </label>
+        </div>
+        <div>            
+            <strong>Peso(Kg)</strong>
+            <input type="number" placeholder="Ejm: 1.3"/>
+        </div>
+        <legend>Calidad del residuo</legend>
+        <h2>Seleccione por favor la calidad del residuo a registrar.</h2>
+        <div>
+            <input type="radio" id="calidad1" name="CalidadRes" value="calidadAlta"/>
+            <label for="calidad1">
+                <strong>Alta calidad</strong>
+                <p>Material fresco, rapida descomposición.</p>
+                <small>x1.8</small>
+            </label>
+
+            <input type="radio" id="calidad2" name="CalidadRes" value="calidadMedia"/>
+            <label for="calidad2">
+                <strong>Media calidad</strong>
+                <p>Material no tan fresco, lenta descomposición.</p>
+                <small>x1.4</small>
+            </label>
+        </div>
+        <div>
+            <button>Registrar residuo</button>
+        </div>
+    </fieldset>
+   </form>
+   @if (Model.Puntos > 0)
+{
+    <h3>Puntos obtenidos: @Model.Puntos</h3>
+}
+</div>

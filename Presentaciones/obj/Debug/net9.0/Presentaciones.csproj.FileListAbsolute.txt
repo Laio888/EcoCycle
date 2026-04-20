@@ -1,0 +1,16 @@
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\bin\Debug\net9.0\Presentaciones.deps.json
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\bin\Debug\net9.0\Presentaciones.dll
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\bin\Debug\net9.0\Presentaciones.pdb
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\bin\Debug\net9.0\Dominio.dll
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\bin\Debug\net9.0\Dominio.pdb
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.sourcelink.json
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presenta.4E13FEAB.Up2Date
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.dll
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\refint\Presentaciones.dll
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\Presentaciones.pdb
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\Presentaciones\obj\Debug\net9.0\ref\Presentaciones.dll

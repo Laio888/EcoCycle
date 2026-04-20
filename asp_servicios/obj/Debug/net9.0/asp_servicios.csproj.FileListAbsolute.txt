@@ -1,0 +1,9 @@
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Lenovo\Desktop\EcoCycle_owo\EcoCycle\asp_servicios\obj\Debug\net9.0\asp_servicios.sourcelink.json
