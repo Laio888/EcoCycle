@@ -1,0 +1,531 @@
+@page
+@model RecompensasModel
+@{
+    ViewData["Title"] = "Recompensas EcoCycle";
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 60%);
+        min-height: 100vh;
+    }
+
+    /* Navegación - Estilo consistente */
+    .eco-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 48px;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .eco-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        text-decoration: none;
+    }
+
+    .eco-logo-icon {
+        width: 36px;
+        height: 36px;
+        background: #16a34a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-btns {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-outline {
+        padding: 9px 22px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: transparent;
+        color: #374151;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+        border-color: #16a34a;
+        color: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    .btn-green {
+        padding: 9px 22px;
+        border: none;
+        border-radius: 8px;
+        background: #16a34a;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-green:hover {
+        background: #15803d;
+        transform: translateY(-2px);
+    }
+
+    .btn-primary {
+        padding: 9px 22px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Contenedor principal */
+    .recompensas-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 48px;
+    }
+
+    /* Header */
+    .page-header {
+        background: white;
+        border-radius: 20px;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .page-header h2 {
+        margin: 0;
+        color: #111827;
+        font-size: 28px;
+        font-weight: 800;
+    }
+
+    .page-header p {
+        margin: 8px 0 0 0;
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    /* Tarjeta de puntos */
+    .puntos-card {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        border-radius: 16px;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .puntos-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .puntos-icon {
+        font-size: 48px;
+        animation: pulse 2s infinite;
+    }
+
+    .puntos-text {
+        color: white;
+    }
+
+    .puntos-label {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 5px;
+    }
+
+    .puntos-value {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .puntos-unit {
+        font-size: 18px;
+        font-weight: 400;
+        margin-left: 5px;
+    }
+
+    .puntos-meta {
+        text-align: right;
+    }
+
+    .puntos-next {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .progress-bar-bg {
+        background: rgba(255,255,255,0.3);
+        border-radius: 10px;
+        height: 8px;
+        width: 200px;
+        margin-top: 8px;
+    }
+
+    .progress-bar {
+        background: white;
+        border-radius: 10px;
+        height: 8px;
+        transition: width 0.5s ease;
+    }
+
+    /* Grid de recompensas */
+    .rewards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .reward-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+        position: relative;
+    }
+
+    .reward-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .reward-card.disabled {
+        opacity: 0.7;
+    }
+
+    .reward-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #f97316;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        z-index: 1;
+    }
+
+    .reward-icon {
+        font-size: 64px;
+        text-align: center;
+        padding: 30px 20px 20px;
+        background: linear-gradient(135deg, #f0fdf4, #ffffff);
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .reward-content {
+        padding: 20px;
+    }
+
+    .reward-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 10px;
+    }
+
+    .reward-desc {
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .reward-features {
+        list-style: none;
+        margin-bottom: 20px;
+    }
+
+    .reward-features li {
+        font-size: 13px;
+        color: #374151;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .reward-points {
+        font-size: 28px;
+        font-weight: 800;
+        color: #16a34a;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .reward-points span {
+        font-size: 14px;
+        font-weight: 400;
+        color: #6b7280;
+    }
+
+    .reward-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    .reward-btn-canjeable {
+        background: #16a34a;
+        color: white;
+    }
+
+    .reward-btn-canjeable:hover {
+        background: #15803d;
+        transform: scale(1.02);
+    }
+
+    .reward-btn-insuficiente {
+        background: #e5e7eb;
+        color: #9ca3af;
+        cursor: not-allowed;
+    }
+
+    /* Mensaje de alerta */
+    .alert-message {
+        background: #dcfce7;
+        border: 1px solid #bbf7d0;
+        border-radius: 12px;
+        padding: 15px 20px;
+        margin-top: 20px;
+        text-align: center;
+        color: #166534;
+        font-weight: 500;
+        animation: slideIn 0.5s ease;
+    }
+
+    /* Animaciones */
+    @@keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    @@keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .reward-card {
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .eco-nav {
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px 20px;
+        }
+
+        .recompensas-container {
+            padding: 20px;
+        }
+
+        .nav-btns {
+            justify-content: center;
+        }
+
+        .page-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .puntos-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .puntos-info {
+            flex-direction: column;
+        }
+
+        .puntos-meta {
+            text-align: center;
+        }
+
+        .rewards-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- Barra de Navegación -->
+<nav class="eco-nav">
+    <a href="/Index" class="eco-logo">
+        <div class="eco-logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+        </div>
+        EcoCycle
+    </a>
+    <div class="nav-btns">
+        <a href="/Index" class="btn-outline">🏠 Inicio</a>
+        <a href="/Dashboard" class="btn-primary">📊 Dashboard</a>
+        <a href="/RegistrarResiduos" class="btn-green">♻️ Registrar Residuos</a>
+    </div>
+</nav>
+
+<div class="recompensas-container">
+    <!-- Header -->
+    <div class="page-header">
+        <div>
+            <h2>🎁 Catálogo de Recompensas</h2>
+            <p>Canjea tus puntos por productos y experiencias sostenibles</p>
+        </div>
+        <div>
+            <span style="font-size: 14px; color: #6b7280;">🌍 Cada canje ayuda al planeta</span>
+        </div>
+    </div>
+
+    <!-- Tarjeta de Puntos -->
+    <div class="puntos-card">
+        <div class="puntos-info">
+            <div class="puntos-icon">⭐</div>
+            <div class="puntos-text">
+                <div class="puntos-label">Tus Puntos Acumulados</div>
+                <div class="puntos-value">
+                    @Model.PuntosUsuario.ToString("N0")
+                    <span class="puntos-unit">pts</span>
+                </div>
+            </div>
+        </div>
+        <div class="puntos-meta">
+            <div class="puntos-next">🎯 Sigue así, cada punto cuenta</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar" style="width: @(Math.Min(100, (Model.PuntosUsuario % 200) / 2.0))%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de Recompensas -->
+    <div class="rewards-grid">
+        @foreach (var r in Model.Recompensas)
+        {
+            bool puedeCanjear = Model.PuntosUsuario >= r.PuntosNecesarios;
+            <div class="reward-card @(puedeCanjear ? "" : "disabled")">
+                @if (!puedeCanjear)
+                {
+                    <div class="reward-badge">🔒 Bloqueado</div>
+                }
+                else
+                {
+                    <div class="reward-badge" style="background: #16a34a;">✨ Disponible</div>
+                }
+                <div class="reward-icon">@r.Icono</div>
+                <div class="reward-content">
+                    <h3 class="reward-title">@r.Nombre</h3>
+                    <p class="reward-desc">@r.Descripcion</p>
+                    <ul class="reward-features">
+                        <li>🌱 Impacto ambiental positivo</li>
+                        <li>♻️ Promueve sostenibilidad</li>
+                        <li>🏆 Mejora tu progreso</li>
+                    </ul>
+                    <div class="reward-points">
+                        @r.PuntosNecesarios <span>puntos</span>
+                    </div>
+                    @if (puedeCanjear)
+                    {
+                        <form method="post">
+                            <input type="hidden" name="id" value="@r.Id" />
+                            <button class="reward-btn reward-btn-canjeable">
+                                🎁 Canjear Ahora
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button class="reward-btn reward-btn-insuficiente" disabled>
+                            ⚡ Te faltan @(r.PuntosNecesarios - Model.PuntosUsuario) puntos
+                        </button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Mensaje -->
+    @if (!string.IsNullOrEmpty(Model.Mensaje))
+    {
+        <div class="alert-message">
+            @Model.Mensaje
+        </div>
+    }
+</div>

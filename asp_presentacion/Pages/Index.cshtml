@@ -1,10 +1,241 @@
-﻿@page
-@model IndexModel
+﻿
+@page
+@model asp_presentacion.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoCycle - Plataforma de Compostaje Digital</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: white; }
+        .eco-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; background: white; border-bottom: 1px solid #e5e7eb; }
+        .eco-logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 700; color: #111827; text-decoration: none; }
+        .eco-logo-icon { width: 36px; height: 36px; background: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .nav-btns { display: flex; gap: 12px; align-items: center; }
+        .btn-outline { padding: 9px 22px; border: 1px solid #d1d5db; border-radius: 8px; background: transparent; color: #374151; font-size: 14px; text-decoration: none; display: inline-block; }
+        .btn-green { padding: 9px 22px; border: none; border-radius: 8px; background: #16a34a; color: white; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 48px; background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 60%); }
+        .hero-left { max-width: 520px; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 20px; padding: 6px 14px; font-size: 13px; color: #16a34a; font-weight: 500; margin-bottom: 24px; }
+        .hero-title { font-size: 48px; font-weight: 800; color: #111827; line-height: 1.15; margin-bottom: 20px; }
+        .hero-title span { color: #16a34a; }
+        .hero-desc { font-size: 16px; color: #6b7280; line-height: 1.7; margin-bottom: 32px; }
+        .hero-btns { display: flex; gap: 12px; }
+        .btn-hero-green { padding: 13px 28px; background: #16a34a; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-hero-outline { padding: 13px 28px; border: 1px solid #d1d5db; border-radius: 8px; background: transparent; color: #374151; font-size: 15px; text-decoration: none; display: inline-block; }
+        .hero-card { background: #16a34a; border-radius: 20px; padding: 28px; width: 380px; color: white; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .card-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .card-title { font-size: 20px; font-weight: 700; }
+        .card-sub { font-size: 13px; opacity: 0.8; }
+        .progress-bar-bg { background: rgba(255,255,255,0.3); border-radius: 10px; height: 8px; margin-bottom: 16px; }
+        .progress-bar { background: white; border-radius: 10px; height: 8px; width: 82%; }
+        .card-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .stat { background: white; border-radius: 10px; padding: 12px; text-align: center; }
+        .stat-num { font-size: 20px; font-weight: 700; }
+        .stat-num.green { color: #16a34a; }
+        .stat-num.blue { color: #2563eb; }
+        .stat-num.amber { color: #d97706; }
+        .stat-label { font-size: 11px; color: #6b7280; }
+        .metrics { display: flex; justify-content: center; gap: 80px; padding: 60px 48px; border-top: 1px solid #f3f4f6; }
+        .metric { text-align: center; }
+        .metric-num { font-size: 40px; font-weight: 800; margin-bottom: 4px; }
+        .metric-num.green { color: #16a34a; }
+        .metric-num.blue { color: #2563eb; }
+        .metric-num.amber { color: #d97706; }
+        .metric-num.purple { color: #7c3aed; }
+        .metric-label { font-size: 14px; color: #6b7280; }
+        .como-funciona { background: #f0fdf4; padding: 60px 48px; text-align: center; }
+        .section-title { font-size: 36px; font-weight: 800; color: #111827; margin-bottom: 12px; }
+        .section-sub { font-size: 15px; color: #6b7280; margin-bottom: 48px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .feature-card { background: white; border-radius: 12px; padding: 24px; text-align: left; }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+        .feature-title { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        .feature-desc { font-size: 13px; color: #6b7280; }
+        .quienes { display: flex; gap: 60px; padding: 60px 48px; align-items: flex-start; }
+        .quienes-left { max-width: 480px; }
+        .quienes-title { font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 16px; }
+        .quienes-desc { font-size: 15px; color: #6b7280; line-height: 1.7; margin-bottom: 16px; }
+        .quienes-list { list-style: none; }
+        .quienes-list li { font-size: 14px; color: #374151; padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+        .quienes-right { display: flex; flex-direction: column; gap: 16px; flex: 1; }
+        .valor-card { background: #f0fdf4; border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; gap: 14px; }
+        .valor-icon { width: 40px; height: 40px; background: #16a34a; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .valor-title { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .valor-desc { font-size: 13px; color: #6b7280; }
+    </style>
+</head>
+<body>
+<nav class="eco-nav">
+    <a href="/" class="eco-logo">
+     
+        <div class="w-10 h-10 bg-gradient-to-br 
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            from-green-500 to-emerald-600 rounded-xl flex items-center justify-center" 
+        data-fg-d4xe5="23.13:31.647:/src/app/pages/Landing.tsx:84:13:2338:192:e:div:e" 
+        data-fgid-d4xe5=":r7:"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+        height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" 
+        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf w-6 h-6 text-white"
+        data-fg-d4xe6="23.13:31.647:/src/app/pages/Landing.tsx:85:15:2472:39:e:Leaf::::::Dxgq" 
+        data-fgid-d4xe6=":r8:"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z">
+
+      </path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+
+
+        EcoCycle
+    </a>
+    <div class="nav-btns">
+        <a href="/Login" class="btn-outline">Iniciar Sesión</a>
+        <a href="/Registro" class="btn-green">Registrarse</a>
+    </div>
+</nav>
+<div class="hero">
+    <div class="hero-left">
+        <div class="badge">✨ Plataforma #1 en Compostaje Digital</div>
+        <h1 class="hero-title">Transforma tus<br><span>residuos orgánicos</span> en<br>recompensas</h1>
+        <p class="hero-desc">Únete a la revolución del compostaje. Registra tus residuos, gana puntos y obtén recompensas mientras ayudas al planeta. ¡El cambio comienza hoy!</p>
+        <div class="hero-btns">
+            <a href="/Registro" class="btn-hero-green">Comenzar Ahora →</a>
+            <a href="/Aprender" class="btn-hero-outline">Conocer Más</a>
+        </div>
+    </div>
+  <div class="hero-card">
+        <div class="card-header">
+            <div class="card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/>
+                    <path d="M12 2c2.5 2.5 4 6 4 10"/>
+                    <path d="M2 12h10"/>
+                </svg>
+            </div>
+            <div>
+                <div class="card-title">Nivel 12</div>
+                <div class="card-sub">Eco Maestro</div>
+            </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
+            <span>Progreso</span><span style="font-weight:600;">2,450 / 3,000 pts</span>
+        </div>
+        <div class="progress-bar-bg"><div class="progress-bar"></div></div>
+        <div class="card-stats">
+            <div class="stat"><div class="stat-num green">156</div><div class="stat-label">Registros</div></div>
+            <div class="stat"><div class="stat-num blue">42kg</div><div class="stat-label">Reciclados</div></div>
+            <div class="stat"><div class="stat-num amber">8</div><div class="stat-label">Logros</div></div>
+        </div>
+    </div>
+</div> 
+<div class="metrics">
+    <div class="metric"><div class="metric-num green">50K+</div><div class="metric-label">Usuarios Activos</div></div>
+    <div class="metric"><div class="metric-num blue">200T</div><div class="metric-label">Residuos Reciclados</div></div>
+    <div class="metric"><div class="metric-num amber">1.5M</div><div class="metric-label">Puntos Canjeados</div></div>
+    <div class="metric"><div class="metric-num purple">85%</div><div class="metric-label">Reducción CO₂</div></div>
 </div>
+
+<div class="como-funciona">
+    <h2 class="section-title">¿Cómo Funciona?</h2>
+    <p class="section-sub"> Compostar nunca fue tan fácil y gratificante. Descubre cómo EcoCompost<br>transforma tus hábitos en impacto positivo.</p>
+    <div class="cards-grid">
+        <div class="feature-card">
+            <div class="feature-icon" style="background:#16a34a;">
+♻️
+</div>
+            <div class="feature-title"> Registro Fácil</div>
+            <div class="feature-desc">Registra tus residuos orgánicos de forma simple y rápida</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background:#f97316;">
+                🏆
+            </div>
+            <div class="feature-title">Gamificación</div>
+            <div class="feature-desc">Gana puntos, sube niveles y desbloquea logros</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background:#2563eb;">
+                🎖️
+            </div>
+            <div class="feature-title">Recompensas Reales</div>
+            <div class="feature-desc">Canjea tus puntos por productos y descuentos exclusivos</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background:#7c3aed;">
+                📈
+            </div>
+            <div class="feature-title">Impacto Medible</div>
+            <div class="feature-desc">Visualiza el impacto positivo de tus acciones</div>
+        </div>
+    </div>
+</div>
+
+<div class="quienes">
+    <div class="quienes-left">
+        <h2 class="quienes-title">¿Quiénes Somos?</h2>
+        <p class="quienes-desc">EcoCycle es una plataforma digital innovadora que conecta la tecnología con la sostenibilidad ambiental. Nacimos con la misión de hacer el compostaje accesible, medible y gratificante para todos.</p>
+        <p class="quienes-desc">Creemos que cada persona puede marcar la diferencia. Por eso, hemos creado un ecosistema donde tus acciones diarias se convierten en impacto real, recompensas tangibles y un futuro más verde.</p>
+        <ul class="quienes-list">
+            <li>✅ Tecnología de punta para el medio ambiente</li>
+            <li>✅ Sistema de recompensas justo y transparente</li>
+            <li>✅ Comunidad comprometida con el cambio</li>
+        </ul>
+    </div>
+    <div class="quienes-right">
+        <div class="valor-card">
+            <div class="valor-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div><div class="valor-title">Compromiso Ambiental</div><div class="valor-desc">Creemos en un futuro sostenible donde cada acción cuenta</div></div>
+        </div>
+        <div class="valor-card">
+            <div class="valor-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div><div class="valor-title">Comunidad Activa</div><div class="valor-desc">Juntos creamos un movimiento de cambio positivo</div></div>
+        </div>
+        <div class="valor-card">
+            <div class="valor-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div><div class="valor-title">Innovación</div><div class="valor-desc">Tecnología al servicio del medio ambiente</div></div>
+        </div>
+    </div>
+</div>
+
+<div style="background: #f0fdf4; padding: 60px 48px; text-align: center;">
+    <h2 style="font-size: 36px; font-weight: 800; color: #111827; margin-bottom: 48px;">Nuestra Misión</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto;">
+        <div style="background: white; border-radius: 12px; padding: 32px 24px; text-align: center;">
+            <div style="width: 56px; height: 56px; background: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 12px;">Reducir el Desperdicio</h3>
+            <p style="font-size: 13px; color: #6b7280; line-height: 1.6;">Disminuir significativamente la cantidad de residuos orgánicos que terminan en vertederos, transformándolos en recursos valiosos.</p>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 32px 24px; text-align: center;">
+            <div style="width: 56px; height: 56px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 12px;">Educar y Empoderar</h3>
+            <p style="font-size: 13px; color: #6b7280; line-height: 1.6;">Proporcionar conocimientos y herramientas para que cada persona tome decisiones informadas sobre el manejo de sus residuos.</p>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 32px 24px; text-align: center;">
+            <div style="width: 56px; height: 56px; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 2c2.5 2.5 4 6 4 10"/><path d="M2 12h10"/></svg>
+            </div>
+            <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 12px;">Crear Impacto Real</h3>
+            <p style="font-size: 13px; color: #6b7280; line-height: 1.6;">Generar un cambio tangible en la huella de carbono mediante acciones concretas y medibles de cada usuario.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
