@@ -190,3 +190,9 @@ button:hover {
         flex-direction: column;
     }
 }
+
+.eco-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; background: white; border-bottom: 1px solid #e5e7eb; flex-wrap: wrap; gap: 12px; }.eco-logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 700; color: #111827; text-decoration: none; }
+.eco-logo-icon { width: 36px; height: 36px; background: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.nav-btns { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }.btn-outline { padding: 9px 22px; border: 1px solid #d1d5db; border-radius: 8px; background: transparent; color: #374151; font-size: 14px; text-decoration: none; display: inline-block; }
+.btn-green { padding: 9px 22px; border: none; border-radius: 8px; background: #16a34a; color: white; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
+.btn-primary { padding: 9px 22px; border: none; border-radius: 8px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
