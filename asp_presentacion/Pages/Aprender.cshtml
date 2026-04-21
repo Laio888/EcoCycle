@@ -1,0 +1,596 @@
+@page
+@model EcoCycle.asp_presentacion.Pages.AprenderModel
+@{
+    ViewData["Title"] = "Aprender - EcoCycle";
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 60%);
+        min-height: 100vh;
+    }
+
+    /* Navegación */
+    .eco-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 48px;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .eco-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        text-decoration: none;
+    }
+
+    .eco-logo-icon {
+        width: 36px;
+        height: 36px;
+        background: #16a34a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-btns {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-outline {
+        padding: 9px 22px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: transparent;
+        color: #374151;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+        border-color: #16a34a;
+        color: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    .btn-green {
+        padding: 9px 22px;
+        border: none;
+        border-radius: 8px;
+        background: #16a34a;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-green:hover {
+        background: #15803d;
+        transform: translateY(-2px);
+    }
+
+    .btn-primary {
+        padding: 9px 22px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Contenedor principal */
+    .page-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 48px;
+    }
+
+    /* Header */
+    .page-header {
+        background: white;
+        border-radius: 20px;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+    }
+
+    .page-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: #111827;
+        margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+        font-size: 14px;
+        color: #6b7280;
+    }
+
+    /* Filtros */
+    .filter-bar {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 8px 20px;
+        border: 1px solid #e5e7eb;
+        background: white;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #374151;
+    }
+
+    .filter-btn:hover {
+        border-color: #16a34a;
+        color: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+        background: #16a34a;
+        color: white;
+        border-color: #16a34a;
+    }
+
+    /* Grid de artículos */
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .article-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+        text-decoration: none;
+        cursor: pointer;
+        display: block;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .featured-card {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+    }
+
+    .featured-card .card-img-placeholder {
+        border-radius: 16px 0 0 16px;
+        margin: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Imagen placeholder */
+    .card-img-placeholder {
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+        position: relative;
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    }
+
+    .card-img-placeholder.green { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+    .card-img-placeholder.amber { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+    .card-img-placeholder.purple { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+    .card-img-placeholder.blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+
+    .card-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        background: white;
+        color: #374151;
+    }
+
+    .card-badge.basicos { background: #16a34a; color: white; }
+    .card-badge.avanzado { background: #8b5cf6; color: white; }
+    .card-badge.tips { background: #f59e0b; color: white; }
+    .card-badge.impacto { background: #3b82f6; color: white; }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .featured-label {
+        display: inline-block;
+        background: #16a34a;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .card-icon {
+        width: 36px;
+        height: 36px;
+        background: #dcfce7;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: #16a34a;
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+        line-height: 1.4;
+        flex: 1;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .card-footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-top: 12px;
+        border-top: 1px solid #f3f4f6;
+    }
+
+    .card-footer svg {
+        width: 16px;
+        height: 16px;
+        fill: #f59e0b;
+    }
+
+    .card-time {
+        font-size: 12px;
+        color: #6b7280;
+    }
+
+    .card-pts-badge {
+        margin-left: auto;
+        padding: 4px 10px;
+        background: #dcfce7;
+        color: #16a34a;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    /* Animaciones */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .article-card {
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* Ocultar artículos por filtro */
+    .article-card.hidden {
+        display: none;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .eco-nav {
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px 20px;
+        }
+
+        .page-content {
+            padding: 20px;
+        }
+
+        .nav-btns {
+            justify-content: center;
+        }
+
+        .filter-bar {
+            justify-content: center;
+        }
+
+        .articles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-card {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-card .card-img-placeholder {
+            border-radius: 16px 16px 0 0;
+            height: 160px;
+        }
+
+        .card-footer {
+            flex-wrap: wrap;
+        }
+
+        .card-pts-badge {
+            margin-left: 0;
+        }
+    }
+</style>
+
+<!-- Barra de Navegación -->
+<nav class="eco-nav">
+    <a href="/Index" class="eco-logo">
+        <div class="eco-logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+        </div>
+        EcoCycle
+    </a>
+    <div class="nav-btns">
+        <a href="/Index" class="btn-outline">🏠 Inicio</a>
+        <a href="/Dashboard" class="btn-primary">📊 Dashboard</a>
+        <a href="/Recompensas" class="btn-primary">🎁 Recompensas</a>
+        <a href="/Puntos" class="btn-primary">🏆 Puntos</a>
+        <a href="/RegistrarResiduos" class="btn-green">♻️ Registrar Residuos</a>
+    </div>
+</nav>
+
+<div class="page-content">
+    <!-- Header -->
+    <div class="page-header">
+        <h1 class="page-title">📚 Aprende sobre Compostaje</h1>
+        <p class="page-subtitle">Descubre cómo hacer compost de forma correcta y su impacto positivo en el planeta</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="todo">📋 Todo</button>
+        <button class="filter-btn" data-filter="basicos">🌱 Básicos</button>
+        <button class="filter-btn" data-filter="avanzado">🔬 Avanzado</button>
+        <button class="filter-btn" data-filter="tips">💡 Tips</button>
+        <button class="filter-btn" data-filter="impacto">🌍 Impacto Ambiental</button>
+    </div>
+
+    <!-- Grid de artículos -->
+    <div class="articles-grid" id="articlesGrid">
+        <!-- Artículo destacado -->
+        <div class="article-card featured-card" data-category="basicos">
+            <div class="card-img-placeholder green">
+                🌱
+                <span class="card-badge basicos">Básicos</span>
+            </div>
+            <div class="card-body">
+                <span class="featured-label">⭐ Artículo destacado</span>
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0 10-8 10-8s-1 2-5 2.5c.28-.5.61-1.13.88-1.73C14.37 11.05 15.52 9 17 8z" /></svg>
+                    </div>
+                    <span class="card-title">¿Qué es el compostaje y por qué deberías hacerlo?</span>
+                </div>
+                <p class="card-desc">El compostaje transforma residuos orgánicos en abono rico en nutrientes. Aprende por qué es clave para reducir el impacto ambiental de tu hogar y cómo empezar hoy mismo.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 5 min de lectura</span>
+                    <span class="card-pts-badge">✨ +50 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículo 2 -->
+        <div class="article-card" data-category="basicos">
+            <div class="card-img-placeholder amber">
+                🍂
+                <span class="card-badge basicos">Básicos</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0 10-8 10-8s-1 2-5 2.5c.28-.5.61-1.13.88-1.73C14.37 11.05 15.52 9 17 8z" /></svg>
+                    </div>
+                    <span class="card-title">¿Qué residuos puedes compostar en casa?</span>
+                </div>
+                <p class="card-desc">No todo lo orgánico es compostable. Conoce qué sí y qué no debes echar a tu compostador para obtener resultados óptimos y evitar problemas.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 4 min de lectura</span>
+                    <span class="card-pts-badge">✨ +30 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículo 3 - Avanzado -->
+        <div class="article-card" data-category="avanzado">
+            <div class="card-img-placeholder purple">
+                🔬
+                <span class="card-badge avanzado">Avanzado</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#ede9fe;">
+                        <svg viewBox="0 0 24 24" style="fill:#7c3aed;"><path d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z" /></svg>
+                    </div>
+                    <span class="card-title">Compostaje Bokashi: fermentación anaeróbica</span>
+                </div>
+                <p class="card-desc">Técnica japonesa que permite compostar prácticamente cualquier residuo orgánico, incluso carnes y lácteos, en espacios pequeños y sin olores.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 8 min de lectura</span>
+                    <span class="card-pts-badge">✨ +80 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículo 4 - Tips -->
+        <div class="article-card" data-category="tips">
+            <div class="card-img-placeholder blue">
+                💡
+                <span class="card-badge tips">Tips</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#dbeafe;">
+                        <svg viewBox="0 0 24 24" style="fill:#2563eb;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" /></svg>
+                    </div>
+                    <span class="card-title">5 errores comunes al compostar (y cómo evitarlos)</span>
+                </div>
+                <p class="card-desc">Desde exceso de humedad hasta mala proporción de materiales. Identifica los errores más frecuentes y corrígelos fácilmente para un compost exitoso.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 6 min de lectura</span>
+                    <span class="card-pts-badge">✨ +40 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículo 5 - Impacto -->
+        <div class="article-card" data-category="impacto">
+            <div class="card-img-placeholder green">
+                🌍
+                <span class="card-badge impacto">Impacto Ambiental</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7 13.5C5.62 13.5 4.5 12.38 4.5 11S5.62 8.5 7 8.5s2.5 1.12 2.5 2.5S8.38 13.5 7 13.5zm10-5c1.38 0 2.5 1.12 2.5 2.5S18.38 13.5 17 13.5 14.5 12.38 14.5 11s1.12-2.5 2.5-2.5zm-5 9c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z" /></svg>
+                    </div>
+                    <span class="card-title">¿Cuánto CO₂ evitas al compostar tus residuos?</span>
+                </div>
+                <p class="card-desc">Cada kilogramo compostado evita aproximadamente 0.5 kg de CO₂ equivalente. Descubre el impacto real de tus acciones en el medio ambiente.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 7 min de lectura</span>
+                    <span class="card-pts-badge">✨ +60 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artículo 6 - Avanzado -->
+        <div class="article-card" data-category="avanzado">
+            <div class="card-img-placeholder amber">
+                🪱
+                <span class="card-badge avanzado">Avanzado</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <div class="card-icon" style="background:#fef3c7;">
+                        <svg viewBox="0 0 24 24" style="fill:#d97706;"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" /></svg>
+                    </div>
+                    <span class="card-title">Vermicompostaje: lombrices como aliadas</span>
+                </div>
+                <p class="card-desc">Las lombrices rojas de California procesan hasta la mitad de su peso en residuos orgánicos diariamente. Aprende a montar tu propio vermicompostador en casa.</p>
+                <div class="card-footer">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" /></svg>
+                    <span class="card-time">⏱️ 10 min de lectura</span>
+                    <span class="card-pts-badge">✨ +100 pts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Funcionalidad de filtros
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const articles = document.querySelectorAll('.article-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remover clase active de todos los botones
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Agregar clase active al botón clickeado
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+
+                articles.forEach(article => {
+                    if (filterValue === 'todo') {
+                        article.classList.remove('hidden');
+                    } else {
+                        const category = article.getAttribute('data-category');
+                        if (category === filterValue) {
+                            article.classList.remove('hidden');
+                        } else {
+                            article.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>

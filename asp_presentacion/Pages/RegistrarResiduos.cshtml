@@ -1,0 +1,140 @@
+@page
+@model RegistrarResiduosModel
+@{
+    ViewData["Title"] = "Registro y evaluación de residuos";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/RegistrarResiduos.css")" />
+
+<div class="registro-container">
+
+    <header class="registro-header">
+        <h1>♻ Registrar tu Residuo</h1>
+        <p>Selecciona el tipo de residuo y contribuye al medio ambiente ganando puntos.</p>
+    </header>
+
+    <form method="post" class="registro-form">
+
+        <!-- TIPOS DE RESIDUO -->
+        <section class="seccion">
+            <h2>🌱 Residuos orgánicos</h2>
+
+            <div class="grid-opciones">
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="frutas" checked />
+                    <div>
+                        <h3>🍇 Cáscaras de frutas</h3>
+                        <p>Restos de fruta y cáscaras en mal estado.</p>
+                        <span class="puntos">10 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="verduras" />
+                    <div>
+                        <h3>🥬 Cáscaras de verduras</h3>
+                        <p>Hojas, tallos y restos vegetales.</p>
+                        <span class="puntos">12 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="huevo" />
+                    <div>
+                        <h3>🥚 Cáscaras de huevo</h3>
+                        <p>Material útil para compostaje.</p>
+                        <span class="puntos">15 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="cafe" />
+                    <div>
+                        <h3>☕ Posos de café</h3>
+                        <p>Café usado y filtros de papel.</p>
+                        <span class="puntos">15 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="te" />
+                    <div>
+                        <h3>🍵 Bolsas de té</h3>
+                        <p>Sin grapas metálicas.</p>
+                        <span class="puntos">12 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="jardin" />
+                    <div>
+                        <h3>🌱 Residuos de jardín</h3>
+                        <p>Hojas, césped y ramas pequeñas.</p>
+                        <span class="puntos">10 pts/kg</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="ResidOrg" value="cereales" />
+                    <div>
+                        <h3>🍞 Pan y cereales</h3>
+                        <p>Pan duro y restos no procesados.</p>
+                        <span class="puntos">20 pts/kg</span>
+                    </div>
+                </label>
+
+            </div>
+        </section>
+
+        <!-- PESO -->
+        <section class="seccion">
+            <h2>⚖️ Peso del residuo</h2>
+
+            <div class="campo">
+                <input type="number" name="Peso" step="0.1" placeholder="Ej: 1.3 Kg" required />
+            </div>
+        </section>
+
+        <!-- CALIDAD -->
+        <section class="seccion">
+            <h2>✨ Calidad del residuo</h2>
+
+            <div class="grid-opciones">
+
+                <label class="card-opcion">
+                    <input type="radio" name="CalidadRes" value="alta" />
+                    <div>
+                        <h3>Alta calidad</h3>
+                        <p>Material fresco y fácil de compostar.</p>
+                        <span class="puntos">x1.8</span>
+                    </div>
+                </label>
+
+                <label class="card-opcion">
+                    <input type="radio" name="CalidadRes" value="media" />
+                    <div>
+                        <h3>Media calidad</h3>
+                        <p>Descomposición más lenta.</p>
+                        <span class="puntos">x1.4</span>
+                    </div>
+                </label>
+
+            </div>
+        </section>
+
+        <!-- BOTÓN -->
+        <div class="acciones">
+            <button type="submit">Registrar residuo ♻</button>
+        </div>
+
+    </form>
+
+    @if (Model.Puntos > 0)
+    {
+        <div class="resultado">
+            <h3>🎉 Puntos obtenidos: @Model.Puntos</h3>
+        </div>
+    }
+
+</div>
