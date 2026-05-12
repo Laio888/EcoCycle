@@ -8,31 +8,35 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-public class Usuarios
+    [Table("Usuarios")]  
+    public class Usuarios
     {
         [Key]
-        public int Id { get; set; }
+        [Column("UsuarioId")]  
+        public int UsuarioId { get; set; }
 
-        [Required, StringLength(100)]
-        public string Nombre { get; set; } = null!;
+        [Required]
+        [StringLength(255)]
+        [Column("CorreoElectronico")]  
+        public string CorreoElectronico { get; set; } = null!;
 
-        [Required, StringLength(50)]
-        public string Documento { get; set; } = null!;
+        [Required]
+        [StringLength(255)]
+        [Column("ContrasenaHash")]  
+        public string ContrasenaHash { get; set; } = null!;
 
-        [StringLength(200)]
-        public string? Direccion { get; set; }
+        [Column("FechaRegistro")]
+        public DateTime FechaRegistro { get; set; }
 
-        [StringLength(20)]
-        public string? Telefono { get; set; }
+        [Column("FechaUltimoInicioSesion")]
+        public DateTime? FechaUltimoInicioSesion { get; set; }
 
-        [Required, StringLength(150)]
-        public string Correo { get; set; } = null!;
+        [Required]
+        [Column("NivelIdActual")]
+        public int NivelIdActual { get; set; }
 
-        [Required, StringLength(255)]
-        public string Contraseña { get; set; } = null!;
-
-        public DateTime? Fecha_Nacimiento { get; set; }
-
-        public string Rol { get; set; }  // "admin" o "usuario"
+        // Propiedades de navegación
+        [ForeignKey("NivelIdActual")]
+        public virtual Niveles NivelActual { get; set; } = null!;
     }
 }
