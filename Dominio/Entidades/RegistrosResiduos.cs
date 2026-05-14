@@ -25,9 +25,10 @@ namespace Dominio.Entidades
 
         [Required]
         [Column("PesoKg")]
-        public decimal PesoKg { get; set; }  // DECIMAL(8,3) en BD
+        public decimal PesoKg { get; set; }
 
         [Column("FechaRegistro")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO
         public DateTime FechaRegistro { get; set; }
 
         [Column("EvidenciaArchivoId")]
@@ -43,7 +44,6 @@ namespace Dominio.Entidades
         [ForeignKey("EvidenciaArchivoId")]
         public virtual Archivos EvidenciaArchivo { get; set; } = null!;
 
-        // Colección de navegación inversa (un registro puede tener un punto histórico asociado)
         public virtual ICollection<PuntosHistoricos> PuntosHistoricos { get; set; } = new List<PuntosHistoricos>();
     }
 }

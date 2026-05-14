@@ -37,7 +37,7 @@ namespace asp_servicios
             services.AddScoped<IConexion, Conexion>();
 
             // Aplicaciones (una por cada entidad de la BD)
-            services.AddScoped<IUsuariosAplicacion, UsuariosAplicacion>();
+            //services.AddScoped<IUsuariosAplicacion, UsuariosAplicacion>();
 
             // Controladores (si quieres inyectarlos directamente)
             services.AddScoped<TokenController>();

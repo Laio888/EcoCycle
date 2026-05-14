@@ -24,6 +24,7 @@ namespace Dominio.Entidades
         public int RecompensaId { get; set; }
 
         [Column("FechaCanje")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)] // AGREGADO: Indica que la BD genera el valor
         public DateTime FechaCanje { get; set; }
 
         [Required]
@@ -43,7 +44,7 @@ namespace Dominio.Entidades
         [ForeignKey("ComprobanteArchivoId")]
         public virtual Archivos ComprobanteArchivo { get; set; } = null!;
 
-        // Colección de navegación inversa (un canje puede tener un punto histórico asociado)
+        // Colección de navegación inversa
         public virtual ICollection<PuntosHistoricos> PuntosHistoricos { get; set; } = new List<PuntosHistoricos>();
     }
 }

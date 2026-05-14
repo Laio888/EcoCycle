@@ -20,6 +20,7 @@ namespace Dominio.Entidades
         public int UsuarioId { get; set; }
 
         [Column("FechaCambio")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO
         public DateTime FechaCambio { get; set; }
 
         [Required]

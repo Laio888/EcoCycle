@@ -39,6 +39,7 @@ namespace Dominio.Entidades
         public string? FuenteExterna { get; set; }
 
         [Column("FechaPublicacion")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO: Indica que la BD genera el valor
         public DateTime FechaPublicacion { get; set; }
 
         // Propiedades de navegación

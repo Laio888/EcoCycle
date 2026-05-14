@@ -30,6 +30,7 @@ namespace Dominio.Entidades
         public string Valor { get; set; } = null!;
 
         [Column("FechaActualizacion")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO
         public DateTime FechaActualizacion { get; set; }
 
         // Propiedades de navegación

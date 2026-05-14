@@ -1,5 +1,3 @@
-# EcoCycle
-
 -- BASE DE DATOS ECOCYCLE
 CREATE DATABASE Ecocycle;
 GO

@@ -24,6 +24,7 @@ namespace Dominio.Entidades
         public int ContenidoId { get; set; }
 
         [Column("FechaVisionado")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO
         public DateTime FechaVisionado { get; set; }
 
         // Propiedades de navegación

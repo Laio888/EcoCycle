@@ -29,6 +29,7 @@ namespace Dominio.Entidades
         public string Mensaje { get; set; } = null!;
 
         [Column("FechaEnvio")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]  // AGREGADO
         public DateTime FechaEnvio { get; set; }
 
         [Column("Leida")]

@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
@@ -20,6 +16,7 @@ namespace Dominio.Entidades
         [Column("Url")]
         public string Url { get; set; } = null!;
 
+        [Required]
         [Column("TipoArchivoId")]
         public int TipoArchivoId { get; set; }
 
@@ -36,5 +33,9 @@ namespace Dominio.Entidades
 
         [Column("FechaCreacion")]
         public DateTime FechaCreacion { get; set; }
+
+        // Propiedad de navegación - AGREGAR SI NO EXISTE
+        [ForeignKey("TipoArchivoId")]
+        public virtual TiposArchivo? TipoArchivo { get; set; }
     }
 }
