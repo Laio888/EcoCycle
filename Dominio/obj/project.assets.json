@@ -4794,32 +4794,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\salak401\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\flore\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\flore\\OneDrive\\Desktop\\EcoCycle_owo\\EcoCycle\\Dominio\\Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj",
-      "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\obj\\",
+      "projectPath": "C:\\Users\\flore\\OneDrive\\Desktop\\EcoCycle_owo\\EcoCycle\\Dominio\\Dominio.csproj",
+      "packagesPath": "C:\\Users\\flore\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\flore\\OneDrive\\Desktop\\EcoCycle_owo\\EcoCycle\\Dominio\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\salak401\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\flore\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

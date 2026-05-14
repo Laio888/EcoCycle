@@ -1,3 +1,18 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+// ...
+
+var builder = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("secrets.json", optional: true, reloadOnChange: true); // importante!
+
+IConfiguration configuration = builder.Build();
+
+// Registrar la fábrica como servicio (si usas inyección de dependencias)
+services.AddSingleton<DatabaseConnectionFactory>();
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
