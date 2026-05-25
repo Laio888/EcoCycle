@@ -130,6 +130,13 @@
 
     </form>
 
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="resultado error">
+            <h3>⚠️ @Model.ErrorMessage</h3>
+        </div>
+    }
+
     @if (Model.Puntos > 0)
     {
         <div class="resultado">

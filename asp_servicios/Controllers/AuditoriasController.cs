@@ -1,9 +1,11 @@
 using Aplicacion.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/[controller]")]
-public class AuditoriasController : ControllerBase
+namespace asp_servicios.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuditoriasController : ControllerBase
 {
     private readonly IAuditoriaAplicacion _auditoriaAplicacion;
     public AuditoriasController(IAuditoriaAplicacion auditoriaAplicacion)
@@ -26,4 +28,5 @@ public class AuditoriasController : ControllerBase
         var lista = _auditoriaAplicacion.ListarPorEntidad(entidad, entidadId);
         return Ok(new { Entidades = lista });
     }
+}
 }

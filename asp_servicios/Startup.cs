@@ -1,4 +1,3 @@
-using asp_servicios.Controllers;
 using Repositorio.Implementaciones;
 using Repositorio.Interfaces;
 using Aplicacion.Implementaciones;
@@ -34,15 +33,23 @@ namespace asp_servicios
             // services.AddSwaggerGen();
 
             // Repositorio (contexto)
-            services.AddScoped<IConexion, Conexion>();
+            services.AddScoped<IConexion>(provider =>
+            {
+                var conexion = new Conexion();
+                var connectionString = Configuration?.GetConnectionString("SQLServerConnection") ?? Configuration?["StringConexion"] ?? string.Empty;
+                if (string.IsNullOrWhiteSpace(connectionString))
+                {
+                    throw new InvalidOperationException("No se encontró la cadena de conexión SQLServerConnection en la configuración. Revisa Secrets.json o el archivo appsettings.");
+                }
+                conexion.StringConexion = connectionString;
+                return conexion;
+            });
 
             // Aplicaciones (una por cada entidad de la BD)
+            services.AddScoped<IRegistroResiduoAplicacion, RegistroResiduoAplicacion>();
             //services.AddScoped<IUsuariosAplicacion, UsuariosAplicacion>();
 
-            // Controladores (si quieres inyectarlos directamente)
-            services.AddScoped<TokenController>();
-            // (añade aquí otros controladores si necesitas inyectarlos manualmente)
-
+            // Controladores se registran automáticamente en AddControllers.
             services.AddCors(o => o.AddDefaultPolicy(b => b.AllowAnyOrigin()));
         }
 
