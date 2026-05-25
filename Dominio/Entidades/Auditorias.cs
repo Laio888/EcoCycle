@@ -20,7 +20,6 @@ namespace Dominio.Entidades
         public string Accion { get; set; } = string.Empty; // Ej: "Agregar", "Actualizar", "Eliminar"
 
         public string? DatosAntes { get; set; } // JSON o texto con los datos antes del cambio
-        
         public string? DatosDespues { get; set; } // JSON o texto con los datos después del cambio
 
         public string UsuarioAccion { get; set; } = string.Empty; // Quién hizo el cambio

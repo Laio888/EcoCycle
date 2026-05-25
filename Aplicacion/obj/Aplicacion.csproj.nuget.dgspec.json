@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\salak401\\Desktop\\EcoCycle\\Aplicacion\\Aplicacion.csproj": {}
+    "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Aplicacion\\Aplicacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\salak401\\Desktop\\EcoCycle\\Aplicacion\\Aplicacion.csproj": {
+    "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Aplicacion\\Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Aplicacion\\Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Aplicacion\\Aplicacion.csproj",
         "projectName": "Aplicacion",
-        "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Aplicacion\\Aplicacion.csproj",
+        "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Aplicacion\\Aplicacion.csproj",
         "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Aplicacion\\obj\\",
+        "outputPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -31,14 +31,13 @@
         },
         "frameworks": {
           "net9.0": {
-            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj"
+              "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj"
               },
-              "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\Repositorio.csproj": {
-                "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\Repositorio.csproj"
+              "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\Repositorio.csproj": {
+                "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\Repositorio.csproj"
               }
             }
           }
@@ -53,11 +52,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
-          "framework": "net9.0",
           "targetAlias": "net9.0",
           "imports": [
             "net461",
@@ -70,37 +68,23 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -120,7 +104,6 @@
         },
         "frameworks": {
           "net9.0": {
-            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {}
           }
@@ -135,11 +118,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
-          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -176,37 +158,23 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\Repositorio.csproj": {
+    "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\Repositorio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\Repositorio.csproj",
+        "projectUniqueName": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\Repositorio.csproj",
         "projectName": "Repositorio",
-        "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\Repositorio.csproj",
+        "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\Repositorio.csproj",
         "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Repositorio\\obj\\",
+        "outputPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Repositorio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -226,11 +194,10 @@
         },
         "frameworks": {
           "net9.0": {
-            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\salak401\\Desktop\\EcoCycle\\Dominio\\Dominio.csproj"
+              "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\salak401\\Downloads\\EcoCycle-main\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -245,11 +212,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
-          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -272,26 +238,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.16, 9.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
